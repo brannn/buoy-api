@@ -26,6 +26,6 @@ var methods = {
     pp: function(subject) {
         console.log(JSON.stringify(subject, false, 4));
     },
-}
+};
 
 module.exports = methods;
