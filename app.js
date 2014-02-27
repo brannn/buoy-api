@@ -3,7 +3,6 @@ var app = express(),
     station = require('./src/routes/station');
 var winston = require('winston');
 var async = require('async');
-var r = require('rethinkdb');
 var utils = require('./src/lib/utils');
 var defaults = require('./config/defaults');
 var overrides = require('./config/overrides');
