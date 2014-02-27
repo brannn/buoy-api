@@ -13,8 +13,6 @@ if (!process.env.NODE_ENV) {
 }
 
 config = utils.merge(defaults, overrides);
- 
-utils.pp(config);
 
 var winstonStream = {
     write: function(message, encoding){
@@ -24,21 +22,14 @@ var winstonStream = {
 winston.add(winston.transports.File, { filename: './log/api.log' });
 app.use(express.logger({stream:winstonStream}));
 
-
 app.configure(function() {
-
     app.all('*', function(request, response, next) {
         response.header('Access-Control-Allow-Origin', '*');
         response.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
         response.header('Access-Control-Allow-Headers', 'Content-Type');
         next();
     }), 
-
     app.use(express.static('public'));
-    app.use(express.cookieParser());
-    app.set('views', __dirname + '/views');
-    app.set('view engine', 'jade');
-
 });
 
 app.get('/api/station/:id', station.getAllMetrics); 
@@ -48,6 +39,8 @@ app.get('/api/station/:id/swh', station.getSignificantWaveHeight);
 //app.get('/api/station/:id/apd', station.getAverageWavePeriod);
 
 app.listen(config.api.port);
+console.log("Loaded configuration: " );
+utils.pp(config);
 console.log('Listening on port ' + config.api.port);
  
 module.exports = app;
