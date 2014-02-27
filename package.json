@@ -9,7 +9,7 @@
     "private": true,
     "dependencies": {
         "express": "3.x",
-        "rethinkdb": "1.11.0",
+        "rethinkdb": "1.11.0-4",
         "winston": "0.7.2"
     },
     "engines": {
