@@ -1,0 +1,19 @@
+{
+    "name": "buoy-api",
+    "version": "0.0.1",
+    "description": "JSON webservice providing metrics collected from the NOAA's National Data Buoy Center feeds",
+    "author": {
+        "name": "Brandon Huey",
+        "email": "brandon@stylograph.net"
+    },
+    "private": true,
+    "dependencies": {
+        "express": "3.x",
+        "rethinkdb": "1.11.0",
+        "winston": "0.7.2"
+    },
+    "engines": {
+        "node": "0.10.25",
+        "npm": "1.3.24"
+    }
+}
