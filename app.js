@@ -21,14 +21,17 @@ var winstonStream = {
 winston.add(winston.transports.File, { filename: './log/api.log' });
 app.use(express.logger({stream:winstonStream}));
 
+app.use(express.compress());
+
 app.configure(function() {
     app.all('*', function(request, response, next) {
         response.header('Access-Control-Allow-Origin', '*');
         response.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
         response.header('Access-Control-Allow-Headers', 'Content-Type');
         next();
-    }), 
-    app.use(express.static('public'));
+    }),
+//    app.use(express.static('public'));
+app.use('/public', express.static(__dirname + '/public'));
 });
 
 app.get('/api/station/:id', station.getAllMetrics); 

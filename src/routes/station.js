@@ -8,7 +8,7 @@ var station = {
             connection = conn;
             connection.use("buoy");
             connection.close(function(err) { if (err) throw err; });
-            r.table('bar').filter({station_id: parseInt(request.params.id)}).orderBy(r.asc('timestamp')).limit(300).run(connection, function(err, cursor) {
+            r.table('bar').filter({station_id: parseInt(request.params.id)}).orderBy(r.asc('timestamp')).run(connection, function(err, cursor) {
                 if (err) throw err;
             cursor.toArray(function(err, result) {
                 if (err) throw err;
@@ -25,7 +25,7 @@ var station = {
             connection = conn;
             connection.use("buoy");
             connection.close(function(err) { if (err) throw err; });
-            r.table('bar').filter({station_id: parseInt(request.params.id)}).orderBy(r.asc('timestamp')).run(connection, function(err, cursor) {
+            r.table('bar').filter({station_id: parseInt(request.params.id)}).orderBy(r.asc('timestamp')).pluck('SwP', 'SwH', 'SwHf', 'WVHT', 'WVHTf', 'station_id', 'timestamp').run(connection, function(err, cursor) {
                 if (err) throw err;
             cursor.toArray(function(err, result) {
                 if (err) throw err;
